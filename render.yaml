@@ -1,0 +1,17 @@
+services:
+
+  - type: web
+    name: gemini-chat-backend
+    runtime: python
+    plan: free
+
+    buildCommand: pip install -r requirements.txt
+
+    startCommand: gunicorn main:app
+
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash-lite
